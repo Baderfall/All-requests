@@ -40,7 +40,6 @@ function getPhotoSrc(value) {
   
     if (xhr.status !== 200) {
     } else {
-      console.log(xhr.getAllResponseHeaders());
       const response = xhr.responseText;
       const src = getSrc(response);
       const img = getImage(src);
