@@ -67,11 +67,11 @@ function drawPhoto(value) {
     const img = getImg(src);
     
     drawImg(img);
-  }
+  };
 
   xhr.onerror = function() {
     console.log(xhr.statusText);
-  }
+  };
 }
 
 /******WEBSOCKET*****/
@@ -127,4 +127,23 @@ function drawPhoto(value) {
   .then(img => {
     drawImg(img);
   });
+}
+
+/*********FETCH*********/
+
+function drawPhoto(value) {
+  fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyB9COzxg7qOvThJlJcRb523mybrL9MSU84&type=video&part=snippet&maxResults=1&q=${value}`)
+    .then(response => {
+      // could return in .json() || .blob() || .arrayBuffer()
+      return response.text();
+    })
+    .then(response => {
+      return getSrc(response);
+    })
+    .then(src => {
+      return getImg(src);
+    })
+    .then(img => {
+      drawImg(img);
+    });
 }
