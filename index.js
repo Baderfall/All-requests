@@ -1,6 +1,8 @@
 const field = document.querySelector('#search-field');
 const btn = document.querySelector('#search-button');
 
+/*****LISTENERS***/
+
 btn.addEventListener('click', () => {
   const value = field.value;
   drawPhoto(value);
@@ -11,6 +13,8 @@ field.addEventListener('keydown', (e) => {
     btn.click();
   }
 });
+
+/******CALLBACK FUNCTIONS*****/
 
 function getSrc(response) {
   const JSONresponse = JSON.parse(response);
@@ -74,36 +78,6 @@ function drawPhoto(value) {
   };
 }
 
-/******WEBSOCKET*****/
-
-/*const ws = new WebSocket('ws://echo.websocket.org');
-
-ws.onopen = function() {
-  console.log('Соединение установлено.');
-  this.send('ALO');
-};
-
-ws.onclose = function(e) {
-  if (e.wasClean) {
-    console.log('Соединение закрыто.');
-  } else {
-    console.log('Соединение разорвано.');
-  }
-  console.log('Код: ' + event.code + ' причина: ' + event.reason);
-};
-
-ws.onmessage = function(e) {
-  console.log('Получены данные: ' + e.data);
-};
-
-ws.onerror = function(error) {
-  console.log('Ошибка: ' + error.message);
-};
-
-setTimeout(function() {
-  ws.close();
-}, 3000);*/
-
 /*********PROMISE********/
 
 function drawPhoto(value) {
@@ -147,3 +121,33 @@ function drawPhoto(value) {
       drawImg(img);
     });
 }
+
+/******WEBSOCKET*****/
+
+/*const ws = new WebSocket('ws://echo.websocket.org');
+
+ws.onopen = function() {
+  console.log('Соединение установлено.');
+  this.send('ALO');
+};
+
+ws.onclose = function(e) {
+  if (e.wasClean) {
+    console.log('Соединение закрыто.');
+  } else {
+    console.log('Соединение разорвано.');
+  }
+  console.log('Код: ' + event.code + ' причина: ' + event.reason);
+};
+
+ws.onmessage = function(e) {
+  console.log('Получены данные: ' + e.data);
+};
+
+ws.onerror = function(error) {
+  console.log('Ошибка: ' + error.message);
+};
+
+setTimeout(function() {
+  ws.close();
+}, 3000);*/
